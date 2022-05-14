@@ -1,4 +1,5 @@
 import React from "react";
+import "firebase/auth";
 
 const Auth = () => <span>Auth</span>;
 
