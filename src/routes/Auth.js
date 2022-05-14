@@ -10,6 +10,7 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
+  const [error, setError] = useState("");
 
   const onChangeHandler = (event) => {
     // destructure based on the target's name and value
@@ -42,10 +43,13 @@ const Auth = () => {
       }
       console.log("DATA: ", data);
     } catch (error) {
-      console.log("ERROR: ", error);
+      setError(error.message);
     }
   };
 
+  const toggleAccount = () => {
+    setNewAccount((prev) => !prev);
+  };
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
@@ -70,9 +74,15 @@ const Auth = () => {
           value={newAccount ? "Create Account" : "Login"}
           required
         />
+        {error}
       </form>
-      <button>Continue with Google</button>
-      <button>Continue with Github</button>
+      <span onClick={toggleAccount}>
+        {newAccount ? "Sign In" : "Create Account"}
+      </span>
+      <div>
+        <button>Continue with Google</button>
+        <button>Continue with Github</button>
+      </div>
     </div>
   );
 };
