@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import "firebase/auth";
 import { authService } from "fbase";
 import {
-  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
 } from "firebase/auth";
 
 const Auth = () => {
@@ -47,9 +50,27 @@ const Auth = () => {
     }
   };
 
+  // toggle account between signin and registering
   const toggleAccount = () => {
     setNewAccount((prev) => !prev);
   };
+
+  const onSocialClickHandler = async (event) => {
+    // destructure based on the target's name
+    const {
+      target: { name },
+    } = event;
+
+    let provider;
+    if (name === "google") {
+      provider = new GoogleAuthProvider();
+    } else if (name === "github") {
+      provider = new GithubAuthProvider();
+    }
+    const data = await signInWithPopup(authService, provider);
+    console.log("DATA: ", data);
+  };
+
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
@@ -80,8 +101,12 @@ const Auth = () => {
         {newAccount ? "Sign In" : "Create Account"}
       </span>
       <div>
-        <button>Continue with Google</button>
-        <button>Continue with Github</button>
+        <button onClick={onSocialClickHandler} name="google">
+          Continue with Google
+        </button>
+        <button onClick={onSocialClickHandler} name="github">
+          Continue with Github
+        </button>
       </div>
     </div>
   );
