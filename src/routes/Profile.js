@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { authService } from "fbase";
+import { authService } from "../fbase";
 
 const Profile = () => {
   const navigate = useNavigate();

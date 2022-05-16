@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "firebase/auth";
-import { authService } from "fbase";
+import { authService } from "../fbase";
 import {
   createUserWithEmailAndPassword,
   GithubAuthProvider,
@@ -44,7 +44,7 @@ const Auth = () => {
         // login
         data = await signInWithEmailAndPassword(authService, email, password);
       }
-      console.log("DATA: ", data);
+      // console.log("DATA: ", data);
     } catch (error) {
       setError(error.message);
     }

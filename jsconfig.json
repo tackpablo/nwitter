@@ -1,5 +1,0 @@
-// Allows imports to start with src as the base folder
-{
-  "compilerOptions": { "baseUrl": "src" },
-  "include": ["src"]
-}
