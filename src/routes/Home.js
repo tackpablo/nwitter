@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from "../fbase";
-import { addDoc, collection, getDocs, query } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  query,
+  orderBy,
+} from "firebase/firestore";
 
-const Home = () => {
+const Home = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
   const [nweets, setNweets] = useState([]);
 
-  const getNweets = async () => {
-    const q = query(collection(dbService, "nweets"));
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      const nweetObj = {
-        ...doc.data(),
-        id: doc.id,
-      };
-
-      setNweets((prev) => [nweetObj, ...prev]);
-    });
-  };
-
   useEffect(() => {
-    getNweets();
+    // query firebase for nweet collection, order returned items by createdAt and then desc
+    const q = query(
+      collection(dbService, "nweets"),
+      orderBy("createdAt", "desc")
+    );
+
+    // event listener for any changes (add, delete, update, etc) to database which sets the nweet and is real time (renders)
+    onSnapshot(q, (snapshot) => {
+      const nweetArr = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setNweets(nweetArr);
+    });
   }, []);
 
   const onSubmitHandler = async (event) => {
@@ -29,8 +34,9 @@ const Home = () => {
 
     try {
       const docRef = await addDoc(collection(dbService, "nweets"), {
-        nweet,
+        text: nweet,
         createdAt: Date.now(),
+        creatorId: userObj.uid,
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (error) {
@@ -61,7 +67,7 @@ const Home = () => {
       </form>
       <div>
         {nweets.map((nweet) => (
-          <div key={nweet.id}>{nweet.nweet}</div>
+          <div key={nweet.id}>{nweet.text}</div>
         ))}
       </div>
     </div>
