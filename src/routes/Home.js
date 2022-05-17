@@ -7,6 +7,7 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
+import Nweet from "../components/Nweet";
 
 const Home = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
@@ -29,6 +30,7 @@ const Home = ({ userObj }) => {
     });
   }, []);
 
+  // Handler for submission of nweet to make request to firebase to save nweets
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
@@ -46,6 +48,7 @@ const Home = ({ userObj }) => {
     setNweet("");
   };
 
+  // Handler for input value changes
   const onChangeHandler = (event) => {
     const {
       target: { value },
@@ -67,7 +70,12 @@ const Home = ({ userObj }) => {
       </form>
       <div>
         {nweets.map((nweet) => (
-          <div key={nweet.id}>{nweet.text}</div>
+          <Nweet
+            key={nweet.id}
+            nweetObj={nweet}
+            // checks if nweet creator is same as logged in user id
+            isOwner={nweet.creatorId === userObj.uid}
+          />
         ))}
       </div>
     </div>

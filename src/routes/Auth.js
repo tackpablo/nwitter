@@ -15,6 +15,7 @@ const Auth = () => {
   const [newAccount, setNewAccount] = useState(true);
   const [error, setError] = useState("");
 
+  // Handler for login input value changes
   const onChangeHandler = (event) => {
     // destructure based on the target's name and value
     const {
@@ -29,10 +30,12 @@ const Auth = () => {
     }
   };
 
+  // Handler for submission of nweet to make request to firebase either to login or register a user
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     try {
       let data;
+
       if (newAccount) {
         // create new account
         data = await createUserWithEmailAndPassword(
@@ -50,11 +53,12 @@ const Auth = () => {
     }
   };
 
-  // toggle account between signin and registering
-  const toggleAccount = () => {
+  // Handler for toggling between signup or login form
+  const toggleAccountHandler = () => {
     setNewAccount((prev) => !prev);
   };
 
+  // Handler for toggling between google or github login
   const onSocialClickHandler = async (event) => {
     // destructure based on the target's name
     const {
@@ -62,11 +66,13 @@ const Auth = () => {
     } = event;
 
     let provider;
+
     if (name === "google") {
       provider = new GoogleAuthProvider();
     } else if (name === "github") {
       provider = new GithubAuthProvider();
     }
+
     const data = await signInWithPopup(authService, provider);
     console.log("DATA: ", data);
   };
@@ -97,7 +103,7 @@ const Auth = () => {
         />
         {error}
       </form>
-      <span onClick={toggleAccount}>
+      <span onClick={toggleAccountHandler}>
         {newAccount ? "Sign In" : "Create Account"}
       </span>
       <div>

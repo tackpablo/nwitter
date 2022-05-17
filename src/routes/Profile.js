@@ -5,6 +5,7 @@ import { authService } from "../fbase";
 const Profile = () => {
   const navigate = useNavigate();
 
+  // Handler for logging out user
   const logoutHandler = () => {
     authService.signOut();
     navigate("/");
