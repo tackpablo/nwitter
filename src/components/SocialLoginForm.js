@@ -6,6 +6,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const SocialLoginForm = () => {
   // Handler for toggling between google or github login
@@ -28,12 +30,12 @@ const SocialLoginForm = () => {
   };
 
   return (
-    <div>
-      <button onClick={onSocialClickHandler} name="google">
-        Continue with Google
+    <div className="authBtns">
+      <button onClick={onSocialClickHandler} name="google" className="authBtn">
+        Continue with Google <FontAwesomeIcon icon={faGoogle} />
       </button>
-      <button onClick={onSocialClickHandler} name="github">
-        Continue with Github
+      <button onClick={onSocialClickHandler} name="github" className="authBtn">
+        Continue with Github <FontAwesomeIcon icon={faGithub} />
       </button>
     </div>
   );
