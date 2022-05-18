@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { dbService } from "../fbase";
+import { dbService, storageService } from "../fbase";
 import {
   addDoc,
   collection,
@@ -7,7 +7,9 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
+import { ref, uploadString, getDownloadURL } from "@firebase/storage";
 import Nweet from "../components/Nweet";
+import { v4 as uuidv4 } from "uuid";
 
 const Home = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
@@ -36,17 +38,35 @@ const Home = ({ userObj }) => {
     event.preventDefault();
 
     try {
-      const addNweetRef = await addDoc(collection(dbService, "nweets"), {
+      let attachmentUrl = "";
+
+      if (attachment != "") {
+        // reference the firestore bucket
+        const attachmentRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
+        const response = await uploadString(
+          attachmentRef,
+          attachment,
+          "data_url"
+        );
+        attachmentUrl = await getDownloadURL(response.ref);
+      }
+
+      const nweetObj = {
         text: nweet,
         createdAt: Date.now(),
         creatorId: userObj.uid,
-      });
-      console.log("Document written with ID: ", addNweetRef.id);
+        attachmentUrl,
+      };
+
+      // add new nweet
+      const addNweet = await addDoc(collection(dbService, "nweets"), nweetObj);
+      console.log("Document written with ID: ", addNweet.id);
     } catch (error) {
       console.error("Error adding document: ", error);
     }
 
     setNweet("");
+    setAttachment("");
   };
 
   // Handler for input value changes

@@ -12,9 +12,9 @@ const Nweet = ({ nweetObj, isOwner }) => {
 
     if (ok) {
       // reference the firestore db collection and nweet id
-      const deleteNweetRef = doc(dbService, "nweets", `${nweetObj.id}`);
+      const deleteNweet = doc(dbService, "nweets", `${nweetObj.id}`);
       // delete nweet
-      await deleteDoc(deleteNweetRef);
+      await deleteDoc(deleteNweet);
     }
   };
 
@@ -62,6 +62,9 @@ const Nweet = ({ nweetObj, isOwner }) => {
       ) : (
         <>
           <h4>{nweetObj.text}</h4>
+          {nweetObj.attachmentUrl && (
+            <img src={nweetObj.attachmentUrl} width="50px" height="50px" />
+          )}
           {isOwner && (
             <>
               <button onClick={onDeleteHandler}>Delete Nweet</button>
