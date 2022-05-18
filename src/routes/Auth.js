@@ -17,7 +17,7 @@ const Auth = () => {
 
   // Handler for login input value changes
   const onChangeHandler = (event) => {
-    // destructure based on the target's name and value
+    // destructure based on the target's name and value, same as event.target.name and event.target.value
     const {
       target: { name, value },
     } = event;
@@ -60,7 +60,7 @@ const Auth = () => {
 
   // Handler for toggling between google or github login
   const onSocialClickHandler = async (event) => {
-    // destructure based on the target's name
+    // destructure based on the target's name, same as event.target.name
     const {
       target: { name },
     } = event;

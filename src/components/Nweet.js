@@ -12,9 +12,9 @@ const Nweet = ({ nweetObj, isOwner }) => {
 
     if (ok) {
       // reference the firestore db collection and nweet id
-      const NweetTextRef = doc(dbService, "nweets", `${nweetObj.id}`);
+      const deleteNweetRef = doc(dbService, "nweets", `${nweetObj.id}`);
       // delete nweet
-      await deleteDoc(NweetTextRef);
+      await deleteDoc(deleteNweetRef);
     }
   };
 
@@ -24,11 +24,10 @@ const Nweet = ({ nweetObj, isOwner }) => {
   // Handler for submitting editing of nweet
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(nweetObj, newNweet);
     // reference the firestore db collection and nweet id
-    const NweetTextRef = doc(dbService, "nweets", `${nweetObj.id}`);
+    const updateNweetRef = doc(dbService, "nweets", `${nweetObj.id}`);
 
-    await updateDoc(NweetTextRef, {
+    await updateDoc(updateNweetRef, {
       text: newNweet,
     });
 
@@ -37,6 +36,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
 
   // Handler for input value changes
   const onChangeHandler = (event) => {
+    // destructure based on the target's name, same as event.target.value
     const {
       target: { value },
     } = event;
