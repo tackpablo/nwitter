@@ -4,7 +4,7 @@ import { authService, dbService } from "../fbase";
 import { updateProfile } from "@firebase/auth";
 import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
 
-const Profile = ({ userObj }) => {
+const Profile = ({ userObj, refreshUser }) => {
   const [newDisplayName, setNewDisplayName] = useState(
     userObj.displayName || "User"
   );
@@ -48,8 +48,12 @@ const Profile = ({ userObj }) => {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     if (userObj.displayName !== newDisplayName) {
-      await updateProfile(userObj, { displayName: newDisplayName });
+      await updateProfile(authService.currentUser, {
+        displayName: newDisplayName,
+      });
+      refreshUser();
     }
+    refreshUser();
   };
 
   return (
