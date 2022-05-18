@@ -21,6 +21,7 @@ function App() {
             updateProfile(user, { displayName: user.displayName }),
         });
       } else {
+        setUserObj(null);
         setIsLoggedIn(false);
       }
       setInit(true);

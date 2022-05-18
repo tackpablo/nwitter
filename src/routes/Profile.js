@@ -36,6 +36,7 @@ const Profile = ({ userObj, refreshUser }) => {
     getMyNweets();
   }, []);
 
+  // Handler for profile name input value change
   const onChangeHandler = (event) => {
     // destructure based on the target's value, same as event.target.value
     const {
@@ -45,6 +46,7 @@ const Profile = ({ userObj, refreshUser }) => {
     setNewDisplayName(value);
   };
 
+  // Handler for updating profile name
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     if (userObj.displayName !== newDisplayName) {
@@ -53,7 +55,6 @@ const Profile = ({ userObj, refreshUser }) => {
       });
       refreshUser();
     }
-    refreshUser();
   };
 
   return (
