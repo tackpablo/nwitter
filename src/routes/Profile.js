@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService, dbService } from "../fbase";
+import { updateProfile } from "@firebase/auth";
 import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
 
 const Profile = ({ userObj }) => {
+  const [newDisplayName, setNewDisplayName] = useState(
+    userObj.displayName || "User"
+  );
   const navigate = useNavigate();
 
   // Handler for logging out user
@@ -12,6 +16,7 @@ const Profile = ({ userObj }) => {
     navigate("/");
   };
 
+  // function to get nweets for logged in user, not used
   const getMyNweets = async () => {
     // create a query against a collection, specify ordering and for logged in user
     const q = query(
@@ -31,8 +36,33 @@ const Profile = ({ userObj }) => {
     getMyNweets();
   }, []);
 
+  const onChangeHandler = (event) => {
+    // destructure based on the target's value, same as event.target.value
+    const {
+      target: { value },
+    } = event;
+
+    setNewDisplayName(value);
+  };
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+    if (userObj.displayName !== newDisplayName) {
+      await updateProfile(userObj, { displayName: newDisplayName });
+    }
+  };
+
   return (
     <>
+      <form onSubmit={onSubmitHandler}>
+        <input
+          type="text"
+          placeholder="Display name"
+          onChange={onChangeHandler}
+          value={newDisplayName}
+        />
+        <input type="submit" value="Update Profile" />
+      </form>
       <button onClick={logoutHandler}>Logout</button>
     </>
   );
