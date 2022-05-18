@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { dbService } from "../fbase";
+import { dbService, storageService } from "../fbase";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { deleteObject, ref } from "@firebase/storage";
 
 const Nweet = ({ nweetObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
@@ -15,6 +16,8 @@ const Nweet = ({ nweetObj, isOwner }) => {
       const deleteNweet = doc(dbService, "nweets", `${nweetObj.id}`);
       // delete nweet
       await deleteDoc(deleteNweet);
+      // delete nweet attachment URL
+      await deleteObject(ref(storageService, nweetObj.attachmentUrl));
     }
   };
 

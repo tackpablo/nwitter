@@ -40,7 +40,7 @@ const Home = ({ userObj }) => {
     try {
       let attachmentUrl = "";
 
-      if (attachment != "") {
+      if (attachment !== "") {
         // reference the firestore bucket
         const attachmentRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
         const response = await uploadString(
