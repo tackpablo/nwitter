@@ -54,6 +54,7 @@ const Profile = ({ userObj, refreshUser }) => {
         displayName: newDisplayName,
       });
       refreshUser();
+      navigate("/");
     }
   };
 

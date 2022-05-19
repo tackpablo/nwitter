@@ -71,9 +71,14 @@ const Nweet = ({ nweetObj, isOwner }) => {
       ) : (
         <>
           <h4>{nweetObj.text}</h4>
+          {isOwner ? (
+            <h6>- Owner &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h6>
+          ) : (
+            <h6>- from {nweetObj.creatorId}</h6>
+          )}
           {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />}
           {isOwner && (
-            <div class="nweet__actions">
+            <div className="nweet__actions">
               <span onClick={onDeleteHandler}>
                 <FontAwesomeIcon icon={faTrash} />
               </span>

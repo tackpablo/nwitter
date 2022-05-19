@@ -70,6 +70,12 @@ form {
   background-color: tomato;
 }
 
+/* Navigation */
+
+span:hover {
+  color: red;
+}
+
 /* Profile Page */
 
 .profileForm {
@@ -84,7 +90,7 @@ form {
   margin-top: 50px;
 }
 
-/* Nwitter Factory */
+/* Nweet Form */
 
 .factoryForm {
   display: flex;
@@ -161,6 +167,10 @@ form {
 
 /* Nweet */
 
+.nweet__actions > span:hover {
+  color: red;
+}
+
 .nweetEdit .formBtn {
   cursor: pointer;
   margin-top: 15px;
@@ -182,6 +192,12 @@ form {
 
 .nweet h4 {
   font-size: 14px;
+}
+
+.nweet h6 {
+  font-size: 8px;
+  text-align: right;
+  margin-top: 1em;
 }
 
 .nweet img {
