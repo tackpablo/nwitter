@@ -25,8 +25,8 @@ const SocialLoginForm = () => {
       provider = new GithubAuthProvider();
     }
 
-    const data = await signInWithPopup(authService, provider);
-    console.log("DATA: ", data);
+    await signInWithPopup(authService, provider);
+    // console.log("DATA: ", data);
   };
 
   return (

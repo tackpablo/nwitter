@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { authService, dbService } from "../fbase";
+import { authService } from "../fbase";
 import { updateProfile } from "@firebase/auth";
-import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
+// import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
 
 const Profile = ({ userObj, refreshUser }) => {
   const [newDisplayName, setNewDisplayName] = useState(
@@ -16,25 +16,25 @@ const Profile = ({ userObj, refreshUser }) => {
     navigate("/");
   };
 
-  // function to get nweets for logged in user, not used
-  const getMyNweets = async () => {
-    // create a query against a collection, specify ordering and for logged in user
-    const q = query(
-      collection(dbService, "nweets"),
-      orderBy("createdAt", "desc"),
-      where("creatorId", "==", userObj.uid)
-    );
+  // // function to get nweets for logged in user, not used
+  // const getMyNweets = async () => {
+  //   // create a query against a collection, specify ordering and for logged in user
+  //   const q = query(
+  //     collection(dbService, "nweets"),
+  //     orderBy("createdAt", "desc"),
+  //     where("creatorId", "==", userObj.uid)
+  //   );
 
-    // event listener for any changes (add, delete, update, etc) to database query which updates our nweets
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-    });
-  };
+  //   // event listener for any changes (add, delete, update, etc) to database query which updates our nweets
+  //   const querySnapshot = await getDocs(q);
+  //   querySnapshot.forEach((doc) => {
+  //     console.log(doc.id, " => ", doc.data());
+  //   });
+  // };
 
-  useEffect(() => {
-    getMyNweets();
-  }, []);
+  // useEffect(() => {
+  //   getMyNweets();
+  // }, []);
 
   // Handler for profile name input value change
   const onChangeHandler = (event) => {
