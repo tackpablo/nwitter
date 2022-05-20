@@ -12,7 +12,6 @@ import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 const SocialLoginForm = () => {
   // Handler for toggling between google or github login
   const onSocialClickHandler = async (event) => {
-    // destructure based on the target's name, same as event.target.name
     const {
       target: { name },
     } = event;
@@ -26,7 +25,6 @@ const SocialLoginForm = () => {
     }
 
     await signInWithPopup(authService, provider);
-    // console.log("DATA: ", data);
   };
 
   return (

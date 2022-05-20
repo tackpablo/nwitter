@@ -15,7 +15,6 @@ const NweetForm = ({ userObj }) => {
 
   // Handler for input value changes
   const onChangeHandler = (event) => {
-    // destructure based on the target's value, same as event.target.value
     const {
       target: { value },
     } = event;
@@ -24,7 +23,6 @@ const NweetForm = ({ userObj }) => {
 
   // Handler for image changes
   const onFileChangeHandler = (event) => {
-    // destructure based on the target's files, same as event.target.files
     const {
       target: { files },
     } = event;
@@ -34,7 +32,6 @@ const NweetForm = ({ userObj }) => {
     const reader = new FileReader();
     // event listener for file reader that listens for reader to finish reading
     reader.onloadend = (finishedEvent) => {
-      // destructure based on the finishedEvent's result, same as finishedEvent.currentTarget.result
       const {
         currentTarget: { result },
       } = finishedEvent;
@@ -55,7 +52,7 @@ const NweetForm = ({ userObj }) => {
       let attachmentUrl = "";
 
       if (attachment !== "") {
-        // reference the firestore bucket
+        // reference the firestore bucket (place that holds image information)
         const attachmentRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
         const response = await uploadString(
           attachmentRef,

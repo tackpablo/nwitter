@@ -14,12 +14,10 @@ const AuthForm = () => {
 
   // Handler for login input value changes
   const onChangeHandler = (event) => {
-    // destructure based on the target's name and value, same as event.target.name and event.target.value
     const {
       target: { name, value },
     } = event;
 
-    // depending on the target's name, set the state
     if (name === "email") {
       setEmail(value);
     } else if (name === "password") {
@@ -44,7 +42,6 @@ const AuthForm = () => {
         // login
         data = await signInWithEmailAndPassword(authService, email, password);
       }
-      // console.log("DATA: ", data);
     } catch (error) {
       setError(error.message);
     }
