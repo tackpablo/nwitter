@@ -1,292 +1,607 @@
 @import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
 
-* {
-  box-sizing: border-box;
+@media screen and (max-width: 768px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  input {
+    all: unset;
+    box-sizing: border-box;
+    appearance: none;
+  }
+
+  body {
+    background-color: black;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    color: white;
+  }
+
+  button {
+    background-color: white;
+    color: black;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .nweet-input::placeholder {
+    color: white;
+    opacity: 0.9;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formInput {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: white;
+    color: black;
+  }
+
+  .formBtn {
+    cursor: pointer;
+    width: 100%;
+    padding: 7px 20px;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    background-color: #04aaff;
+    cursor: pointer;
+  }
+
+  .cancelBtn {
+    cursor: pointer;
+    background-color: tomato;
+  }
+
+  /* Navigation */
+
+  span:hover {
+    color: red;
+  }
+
+  /* Profile Page */
+
+  .profileForm {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+    padding-bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logOut {
+    margin-top: 50px;
+  }
+
+  /* Nweet Form */
+
+  .factoryForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .factoryInput__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .factoryInput__input {
+    flex-grow: 1;
+    height: 40px;
+    padding: 0px 20px;
+    color: white;
+    border: 1px solid #04aaff;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 1em;
+  }
+
+  .factoryInput__arrow {
+    position: absolute;
+    right: 0;
+    background-color: #04aaff;
+    height: 40px;
+    width: 40px;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+  }
+
+  .factoryInput__label {
+    color: #04aaff;
+    cursor: pointer;
+  }
+
+  .factoryInput__label span {
+    margin-right: 10px;
+    font-size: 0.9em;
+  }
+
+  .factoryForm__attachment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .factoryForm__attachment img {
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+  }
+
+  .factoryForm__clear {
+    color: #04aaff;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .factoryForm__clear span {
+    margin-right: 10px;
+    font-size: 12px;
+  }
+
+  /* Nweet */
+
+  .nweet__actions > span:hover {
+    color: red;
+  }
+
+  .nweetEdit .formBtn {
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+
+  .nweet {
+    margin-bottom: 20px;
+    background-color: white;
+    width: 100%;
+    max-width: 320px;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .nweet h4 {
+    font-size: 14px;
+  }
+
+  .nweet h6 {
+    font-size: 8px;
+    text-align: right;
+    margin-top: 1em;
+  }
+
+  .nweet img {
+    right: -10px;
+    top: 20px;
+    position: absolute;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+  }
+
+  .nweet__actions {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  .nweet__actions span {
+    cursor: pointer;
+  }
+
+  .nweet__actions span:first-child {
+    margin-right: 10px;
+  }
+
+  /* Auth */
+
+  .authContainer {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .authBtns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .authBtn {
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 0px;
+    font-size: 12px;
+    text-align: center;
+    width: 150px;
+    background: white;
+    cursor: pointer;
+  }
+
+  /* AuthForm */
+
+  .authInput {
+    max-width: 320px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: black;
+  }
+
+  .authSubmit {
+    text-align: center;
+    background: #04aaff;
+    color: white;
+    margin-top: 10;
+    cursor: pointer;
+  }
+
+  .authError {
+    color: tomato;
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .authSwitch {
+    color: #04aaff;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    display: block;
+    font-size: 12px;
+    text-decoration: underline;
+  }
+
+  /* Navigation */
+
+  nav ul {
+    display: flex;
+    justify-content: center;
+    margin-top: 3.125em;
+  }
 }
 
-input {
-  all: unset;
-  box-sizing: border-box;
-  appearance: none;
-}
+/* Bigger Screen Sizes */
 
-body {
-  background-color: black;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  color: white;
-}
+@media screen and (min-width: 769px) {
+  * {
+    box-sizing: border-box;
+  }
 
-button {
-  background-color: white;
-  color: black;
-}
+  input {
+    all: unset;
+    box-sizing: border-box;
+    appearance: none;
+  }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+  body {
+    background-color: black;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 1em;
+    color: white;
+  }
 
-form {
-  width: 100%;
-}
+  button {
+    background-color: white;
+    color: black;
+  }
 
-.nweet-input::placeholder {
-  color: white;
-  opacity: 0.9;
-}
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
-.container {
-  width: 100%;
-  max-width: 320px;
-  display: flex;
-  flex-direction: column;
-}
+  form {
+    width: 100%;
+  }
 
-.formInput {
-  width: 100%;
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: 1px solid black;
-  text-align: center;
-  background-color: white;
-  color: black;
-}
+  .nweet-input::placeholder {
+    color: white;
+    opacity: 0.9;
+  }
 
-.formBtn {
-  cursor: pointer;
-  width: 100%;
-  padding: 7px 20px;
-  text-align: center;
-  color: white;
-  border-radius: 20px;
-  background-color: #04aaff;
-  cursor: pointer;
-}
+  .container {
+    width: 100%;
+    max-width: 30em;
+    display: flex;
+    flex-direction: column;
+  }
 
-.cancelBtn {
-  cursor: pointer;
-  background-color: tomato;
-}
+  .formInput {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: white;
+    color: black;
+  }
 
-/* Navigation */
+  .formBtn {
+    cursor: pointer;
+    width: 100%;
+    padding: 7px 20px;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    background-color: #04aaff;
+    cursor: pointer;
+  }
 
-span:hover {
-  color: red;
-}
+  .cancelBtn {
+    cursor: pointer;
+    background-color: tomato;
+  }
 
-/* Profile Page */
+  /* Navigation */
 
-.profileForm {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.9);
-  padding-bottom: 30px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
+  span:hover {
+    color: red;
+  }
 
-.logOut {
-  margin-top: 50px;
-}
+  /* Profile Page */
 
-/* Nweet Form */
+  .profileForm {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+    padding-bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 
-.factoryForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
+  .logOut {
+    margin-top: 50px;
+  }
 
-.factoryInput__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  position: relative;
-  margin-bottom: 20px;
-  width: 100%;
-}
+  /* Nweet Form */
 
-.factoryInput__input {
-  flex-grow: 1;
-  height: 40px;
-  padding: 0px 20px;
-  color: white;
-  border: 1px solid #04aaff;
-  border-radius: 20px;
-  font-weight: 500;
-  font-size: 12px;
-}
+  .factoryForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 
-.factoryInput__arrow {
-  position: absolute;
-  right: 0;
-  background-color: #04aaff;
-  height: 40px;
-  width: 40px;
-  padding: 10px 0px;
-  text-align: center;
-  border-radius: 20px;
-  color: white;
-}
+  .factoryInput__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+  }
 
-.factoryInput__label {
-  color: #04aaff;
-  cursor: pointer;
-}
+  .factoryInput__input {
+    flex-grow: 1;
+    height: 45px;
+    padding: 0px 20px;
+    color: white;
+    border: 1px solid #04aaff;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 1.1em;
+  }
 
-.factoryInput__label span {
-  margin-right: 10px;
-  font-size: 12px;
-}
+  .factoryInput__arrow {
+    position: absolute;
+    right: 0;
+    background-color: #04aaff;
+    height: 2.7em;
+    width: 2.7em;
+    padding: 10px 0px;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+  }
 
-.factoryForm__attachment {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+  .factoryInput__label {
+    color: #04aaff;
+    cursor: pointer;
+    font-size: 1.1em;
+  }
 
-.factoryForm__attachment img {
-  height: 80px;
-  width: 80px;
-  border-radius: 40px;
-}
+  .factoryInput__label span {
+    margin-right: 10px;
+    font-size: 1.1em;
+  }
 
-.factoryForm__clear {
-  color: #04aaff;
-  cursor: pointer;
-  text-align: center;
-}
+  .factoryForm__attachment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-.factoryForm__clear span {
-  margin-right: 10px;
-  font-size: 12px;
-}
+  .factoryForm__attachment img {
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+  }
 
-/* Nweet */
+  .factoryForm__clear {
+    color: #04aaff;
+    cursor: pointer;
+    text-align: center;
+  }
 
-.nweet__actions > span:hover {
-  color: red;
-}
+  .factoryForm__clear span {
+    margin-right: 10px;
+    font-size: 12px;
+  }
 
-.nweetEdit .formBtn {
-  cursor: pointer;
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
+  /* Nweet */
 
-.nweet {
-  margin-bottom: 20px;
-  background-color: white;
-  width: 100%;
-  max-width: 320px;
-  padding: 20px;
-  border-radius: 10px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  color: rgba(0, 0, 0, 0.8);
-}
+  .nweet__actions > span:hover {
+    color: red;
+  }
 
-.nweet h4 {
-  font-size: 14px;
-}
+  .nweetEdit .formBtn {
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
 
-.nweet h6 {
-  font-size: 8px;
-  text-align: right;
-  margin-top: 1em;
-}
+  .nweet {
+    margin-bottom: 20px;
+    background-color: white;
+    width: 100%;
+    max-width: 30em;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.8);
+  }
 
-.nweet img {
-  right: -10px;
-  top: 20px;
-  position: absolute;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin-top: 10px;
-}
+  .nweet h4 {
+    font-size: 1em;
+    font-weight: 600;
+  }
 
-.nweet__actions {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
+  .nweet h6 {
+    font-size: 0.9em;
+    text-align: right;
+    margin-top: 1em;
+  }
 
-.nweet__actions span {
-  cursor: pointer;
-}
+  .nweet img {
+    right: -10px;
+    top: 1.9em;
+    position: absolute;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+  }
 
-.nweet__actions span:first-child {
-  margin-right: 10px;
-}
+  .nweet__actions {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
 
-/* Auth */
+  .nweet__actions span {
+    cursor: pointer;
+  }
 
-.authContainer {
-  display: flex;
-  flex-direction: column;
-  height: 80vh;
-  justify-content: center;
-  align-items: center;
-}
+  .nweet__actions span:first-child {
+    margin-right: 10px;
+  }
 
-.authBtns {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 320px;
-}
+  /* Auth */
 
-.authBtn {
-  cursor: pointer;
-  border-radius: 20px;
-  border: none;
-  padding: 10px 0px;
-  font-size: 12px;
-  text-align: center;
-  width: 150px;
-  background: white;
-  cursor: pointer;
-}
+  .authContainer {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+  }
 
-/* AuthForm */
+  .authBtns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 320px;
+  }
 
-.authInput {
-  max-width: 320px;
-  width: 100%;
-  padding: 10px;
-  border-radius: 30px;
-  background-color: rgba(255, 255, 255, 1);
-  margin-bottom: 10px;
-  font-size: 12px;
-  color: black;
-}
+  .authBtn {
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 0px;
+    font-size: 12px;
+    text-align: center;
+    width: 150px;
+    background: white;
+    cursor: pointer;
+  }
 
-.authSubmit {
-  text-align: center;
-  background: #04aaff;
-  color: white;
-  margin-top: 10;
-  cursor: pointer;
-}
+  /* AuthForm */
 
-.authError {
-  color: tomato;
-  text-align: center;
-  font-weight: 500;
-  font-size: 12px;
-}
+  .authInput {
+    max-width: 320px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: black;
+  }
 
-.authSwitch {
-  color: #04aaff;
-  cursor: pointer;
-  margin-top: 10px;
-  margin-bottom: 50px;
-  display: block;
-  font-size: 12px;
-  text-decoration: underline;
+  .authSubmit {
+    text-align: center;
+    background: #04aaff;
+    color: white;
+    margin-top: 10;
+    cursor: pointer;
+  }
+
+  .authError {
+    color: tomato;
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .authSwitch {
+    color: #04aaff;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    display: block;
+    font-size: 12px;
+    text-decoration: underline;
+  }
+
+  /* Navigation */
+
+  nav ul {
+    display: flex;
+    justify-content: center;
+    margin-top: 3.125em;
+  }
 }

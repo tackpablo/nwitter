@@ -7,7 +7,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 const Navigation = ({ userObj }) => {
   return (
     <nav>
-      <ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
+      <ul className="ulList">
         <li>
           <Link
             to="/"
@@ -16,10 +16,10 @@ const Navigation = ({ userObj }) => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              fontSize: 12,
+              fontSize: "1em",
             }}
           >
-            <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
+            <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="3x" />
             <span style={{ marginTop: 10 }}>Nweets</span>
           </Link>
         </li>
@@ -31,10 +31,10 @@ const Navigation = ({ userObj }) => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              fontSize: 12,
+              fontSize: "1em",
             }}
           >
-            <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
+            <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="3x" />
             <span style={{ marginTop: 10 }}>
               {userObj.displayName
                 ? `${
