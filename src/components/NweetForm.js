@@ -113,6 +113,7 @@ const NweetForm = ({ userObj }) => {
             style={{
               backgroundImage: attachment,
             }}
+            alt="nweet attachment preview"
           />
           <div
             className="factoryForm__clear"
