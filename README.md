@@ -2,7 +2,7 @@
 
 A twitter clone used to learn and explore Google Firebase Authentication, Database and Storage.
 
-This app was built based on the tutorial from [NomadCoders](https://nomadcoders.co/).
+This app was built based on the tutorial from [NomadCoders](https://nomadcoders.co/). Some changes have occured since the tutorial was made, and documentation was required to change going from SDK versions 8 to 9.
 
 ### Project Learning Outcomes
 
