@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# Nwitter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A twitter clone used to learn and explore Google Firebase Authentication, Database and Storage.
 
-## Available Scripts
+### Project Learning Outcomes
 
-In the project directory, you can run:
+- Learning to read documentation - using Web version 9
+- Google Firebase Authentication Providers
+  - Email/Password Login
+  - Social Login
+    - GMail
+    - Github
+- Firestore Database
+  - NoSQL manipulation
+- Firebase Storage
+  - File storage (images)
+- Increased exposure to ES6 features
+  - Nested destructuring
+  - Shorthand and spread
+- Multiple state management for form values
+- Github Pages deployment
 
-### `npm start`
+### Improvements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Nweets displayed in chronological order
+- Show's user's ID for each nweet
+- Styling
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Future improvement ideas
 
-### `npm test`
+- Show user name for nweets
+  - Requires addition of database collection and relationship between authentication provider and nweets
+- User photo
+  - Need to store photos for each user in Storage
+  - Separate from nweet image uploading
+- Update non-mobile views
+  - Currently optimized for mobile devices
+- Profile updates
+  - Currently only display name can be changed
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Live Demo
 
-### `npm run build`
+Please visit my app [here](https://tackpablo.github.io/nwitter/) hosted on Github Pages.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- User authentication
+  - Email/Password Login
+  - Social Login
+    - GMail
+    - Github
+- User Profile page
+- Real time CRUD operations for nweets
+- FireStorage for photo storage
+  - Using NoSQL
+- Firebase Database for nweets
+- React frontend for realtime nweets and profile updates
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Stack
 
-### `npm run eject`
+- React.js
+- Node.js
+- HTML/CSS
+- Google Firebase
+- Git
+- Github Pages
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone application:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+git clone git@github.com:tackpablo/nwitter.git <project name>
+```
 
-## Learn More
+2. Install dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+cd <project name>
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+npm install --save-dev
+```
 
-### Code Splitting
+3. Create Firebase account and a new project to get credentials
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Firebase requires you to have a google account. If you do not have one, please make one at the [google](https://www.google.com/gmail/about/) website under **Create an account**
 
-### Analyzing the Bundle Size
+- Go to the [firebase](https://firebase.google.com/) website and register for an account by clicking **Get started**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Once registered, go to your firebase console and create a new project. Name it as 'nwitter'
 
-### Making a Progressive Web App
+- Once created, add a new app called 'Nwitter' and check the information under the 'Firebase SDK Snippet'
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Make sure to read how firebase storage works, pay attention to the pricing scheme as google may charge you for the amount of data used
 
-### Advanced Configuration
+4. Create .ENV file in root directory of project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Copy these lines into .ENV file
 
-### Deployment
+```sh
+REACT_APP_API_KEY=
+REACT_APP_AUTH_DOMAIN=
+REACT_APP_PROJECT_ID=
+REACT_APP_STORAGE_BUCKET=
+REACT_APP_MESSAGING_SENDER_ID=
+REACT_APP_APP_ID=
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Fill environment variables with credentials obtained from Firebase. Remove double quotes ("") for all values.
 
-### `npm run build` fails to minify
+- Example (these keys are examples and do not work)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```sh
+REACT_APP_API_KEY=IsdAasfSfDF-Gf-49i9aASDJAFsa
+REACT_APP_STORAGE_BUCKET=nwitter-65465165161.appspot.com
+```
+
+- Don't forget to save
+
+6. Starting the app
+
+- To start app:
+
+```sh
+npm run start
+```
+
+- This will automatically open a new window, and start the app with http://localhost:3000.
+- If it doesn't open a new browser, open http://localhost:3000 to view it in the browser manually.
+- The page will reload if you make edits.
+- You will also see any lint errors in the console.

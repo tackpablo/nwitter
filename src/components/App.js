@@ -28,6 +28,7 @@ function App() {
     });
   }, []);
 
+  // function that updates user display name
   const refreshUser = () => {
     const user = authService.currentUser;
     setUserObj({
